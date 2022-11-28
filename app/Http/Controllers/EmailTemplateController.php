@@ -19,6 +19,11 @@ class EmailTemplateController extends Controller
 
     }
 
+    public function show($id)
+    {
+        
+    }
+
     public function create()
     {
         $data['emailTemplate']    =   new EmailTemplate();
@@ -29,7 +34,10 @@ class EmailTemplateController extends Controller
 
     public function store(Request $request)
     {
-        EmailTemplate::updateOrCreate(["name"=>$request->name],[$request->email,$request->description]);
+        $emailTemplate                  =   EmailTemplate::firstOrNew(["name"=>$request->name]);
+        $emailTemplate->email           =   $request->email;
+        $emailTemplate->description     =   $request->description;
+        $emailTemplate->save();
         Session::flash('success','email template Added');
         return redirect(route("email.index"));
     }
@@ -37,7 +45,7 @@ class EmailTemplateController extends Controller
 
     public function edit($id)
     {
-        $data['socialMedia']    =   EmailTemplate::findOrFail($id);
+        $data['emailTemplate']    =   EmailTemplate::findOrFail($id);
         $data['url']        =   route("email.update", ['email' => $id]);
         $data['method']     =   "PUT";
         return view("admin.emailTemplate.form", $data);
@@ -49,6 +57,13 @@ class EmailTemplateController extends Controller
         Session::flash('success','Email Template Updated');
         return redirect(route("email.index"));
 
+    }
+
+    public function destroy(Request $request,$id)
+    {
+        EmailTemplate::findOrFail($id)->delete();
+        Session::flash('success','Email Template Deleted');
+        return redirect(route("email.index"));
     }
 
 }

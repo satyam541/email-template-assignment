@@ -37,7 +37,14 @@
                                 <tr>
                                     <td>{{$emailTemplate->name}}</td>
                                     <td>{{$emailTemplate->email}}</td>
-                                    <td><a href="{{route('email.edit',['email'=>$emailTemplate->id])}}" target="_index"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="{{route('email.edit',['email'=>$emailTemplate->id])}}" target="_index"><i class="fa fa-edit"></i></a>
+                                        <form method="POST" action="{{ route('email.destroy',$emailTemplate->id) }}"
+                                            style="display:inline">
+                                             @csrf
+                                             @method('DELETE')
+                                             <button type="submit" class="fa fa-trash text-red" style="border: 0px;background:transparent;"></button>
+                                          </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

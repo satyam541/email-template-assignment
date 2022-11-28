@@ -8,12 +8,12 @@
 @section('content-header')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0">SocialMedia Form</h1>
+            <h1 class="m-0">Email Form</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="{{ route('socialmedia.index') }}">SocialMedia List</a></li>
+                <li class="breadcrumb-item active"><a href="{{ route('email.index') }}">Email List</a></li>
             </ol>
         </div><!-- /.col -->
     </div>
@@ -47,10 +47,15 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         {{ Form::label('email', 'Email', ['class' => 'form-label']) }}
-                        {{ Form::email('email', null, ['id' => 'title', 'class' => 'form-control','required']) }}
+                        {{ Form::email('email', null, ['class' => 'form-control','required']) }}
                     </div>
                 </div>
-
+                <div class="col-md-12">
+                    <div class="form-group">
+                        {{ Form::label('Description', 'Discription', ['class' => 'form-label']) }}
+                        {{ Form::textarea('description', null, ['id' => 'description', 'class' => 'form-control','required']) }}
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
         </div>
