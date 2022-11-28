@@ -44,6 +44,14 @@
                                              @method('DELETE')
                                              <button type="submit" class="fa fa-trash text-red" style="border: 0px;background:transparent;"></button>
                                           </form>
+                                          <form method="POST" action="{{ route('send.email',$emailTemplate->id) }}"
+                                            style="display:inline">
+                                            <input type="hidden" name="name" value="{{$emailTemplate->name}}">
+                                            <input type="hidden" name="email" value="{{$emailTemplate->email}}">
+                                            <input type="hidden" name="description" value="{{$emailTemplate->description}}">
+                                             @csrf
+                                             <button type="submit" class="fa fa-envelope text-yellow" style="border: 0px;background:transparent;"></button>
+                                          </form>
                                     </td>
                                 </tr>
                             @endforeach

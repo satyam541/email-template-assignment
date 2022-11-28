@@ -1,3 +1,4 @@
+<a href="{{ route('register') }}" style="font-size: 20px;" class="m-2 ml-4 text-sm text-dark-700 float-right dark:text-gray-500 underline">Register</a>
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -5,7 +6,6 @@
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
-
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
